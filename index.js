@@ -21,3 +21,45 @@ const allWagesFor = function () {
     return payable
 }
 
+// Create an employee record from an array of strings
+function createEmployeeRecord(employeeArray) {
+    const [firstName, familyName, title, payPerHour] = employeeArray;
+    return {
+      firstName,
+      familyName,
+      title,
+      payPerHour,
+      timeInEvents: [],
+      timeOutEvents: []
+    }
+  }
+  
+  // Create an array of employee records from an array of arrays
+  function createEmployeeRecords(employeeArrays) {
+    return employeeArrays.map(employeeArray => createEmployeeRecord(employeeArray));
+  }
+  
+  // Create a time in event
+  function createTimeInEvent(dateStamp) {
+    const [date, hour] = dateStamp.split(" ");
+    return {
+      type: "TimeIn",
+      hour,
+      date
+    };
+  }
+  
+  // Create a time out event
+  function createTimeOutEvent(dateStamp) {
+    const [date, hour] = dateStamp.split(" ");
+    return {
+      type: "TimeOut",
+      hour,
+      date
+    };
+  }
+  
+//   // Calculate the hours worked on a specific date
+//   function hoursWorkedOnDate(employeeRecord, date) {
+//     const timeInEvents = employeeRecord.timeInEvents.filter(event => event
+
